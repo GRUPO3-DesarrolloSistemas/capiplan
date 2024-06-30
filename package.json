@@ -12,12 +12,25 @@
     "expo": "~51.0.17",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
-    "react-native": "0.74.2"
+    "react-native": "0.74.2",
+    "react-native-svg": "15.2.0",
+    "expo-font": "~12.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.45",
     "typescript": "^5.1.3"
   },
-  "private": true
+  "private": true,
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "standard",
+      "standard-jsx",
+      "standard-react"
+    ],
+    "rules": {
+      "react/prop-types": "off"
+    }
+  }
 }
