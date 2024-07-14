@@ -1,5 +1,7 @@
 {
+    
   "expo": {
+    
     "name": "smart-scheduler",
     "slug": "smart-scheduler",
     "version": "1.0.0",
@@ -15,7 +17,7 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
+        "adaptiveIcon": {
         "foregroundImage": "./assets/img/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
@@ -28,3 +30,6 @@
     ]
   }
 }
+
+
+

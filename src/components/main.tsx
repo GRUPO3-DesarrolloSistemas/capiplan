@@ -1,9 +1,10 @@
 import React from "react";
 
-import Login from "./login";
+
+import GoogleFit from "./Salud/GoogleFit";
 
 export default function Main() {
     return (
-        <Login />
+        <GoogleFit />
     );
 }
