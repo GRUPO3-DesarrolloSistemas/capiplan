@@ -1,6 +1,6 @@
 import React from "react";
 import { useFonts } from "expo-font";
-import { View, Image, Text, TextInput, Button, Pressable } from "react-native";
+import { View, Image, Text, TextInput, Button, Pressable, TouchableOpacity } from "react-native";
 
 import LoginSVG from "../../assets/svg/login/LoginSVG";
 import styles from "../../assets/style/styleLogin";
@@ -42,9 +42,10 @@ export default function Login() {
                     </TextInput>
                 </View>
 
-                <Pressable style={styles.button}>
+                <TouchableOpacity style={styles.button}>
                     <Text style={styles.fontButton}>Ingresar</Text>
-                </Pressable>
+                </TouchableOpacity>
+                
                 <View style={styles.loginOptions}>
                     <Text style={styles.smallFontRegular}>¿Olvidaste tu contraseña?</Text>
                     <Text style={styles.smallFontRegular}>¿No tienes una cuenta? <Text style={styles.smallFontBold}> Registrate</Text></Text>

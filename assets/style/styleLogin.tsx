@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontFamily: 'Comfortaa Bold',
         fontSize: 15,
+        lineHeight: 15,
         color: '#FFF',
     },
     loginOptions: {
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         gap: 40,
-        paddingTop: 10,
+        paddingTop: 20,
     },
 });
 
