@@ -1,10 +1,10 @@
 import React from "react";
 
 
-import GoogleFit from "./Salud/GoogleFit";
+import Navbar from "./NavBar";
 
 export default function Main() {
     return (
-        <GoogleFit />
+        <Navbar />
     );
 }
