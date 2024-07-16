@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
       fontSize: 14,
       color: '#777',
     },
-    activities: {},
     activitiesGrid: {
       flexDirection: 'row',
       flexWrap: 'wrap',

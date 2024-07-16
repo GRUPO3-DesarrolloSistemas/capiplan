@@ -39,7 +39,7 @@ const Home = () => {
             </View>
           </View>
         </View>
-        <View style={styles.activities}>
+        <View>
           <Text style={styles.sectionTitle}>Actividades</Text>
           <View style={styles.activitiesGrid}>
             <View style={[styles.activityCard, styles.purple]}>
