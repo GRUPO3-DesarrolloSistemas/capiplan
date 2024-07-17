@@ -4,6 +4,7 @@ import { BarChart } from "react-native-chart-kit";
 
 interface FitDataSets {
   data: number[];
+  baseline:number;
 }
 
 interface FitChartData {
