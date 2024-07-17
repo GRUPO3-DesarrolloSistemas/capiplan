@@ -1,24 +1,20 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View, Text } from "react-native";
 
 interface FitExerciseStatProps {
   quantity: string;
   type: string;
 }
 
-const FitExerciseStat = (props: FitExerciseStatProps) => {
-  const { quantity, type } = props;
+const FitExerciseStat: React.FC<FitExerciseStatProps> = ({ quantity, type }) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-      }}
-    >
-      <Text style={{ color: "#8eb6e6", fontSize: 23, fontWeight: "500" }}>
+    <View style={{ alignItems: "center" }}>
+      <Text style={{ color: "#e6e7ec", fontSize: 30, fontWeight: "700" }}>
         {quantity}
       </Text>
-      <Text style={{ color: "#9a9ba1", fontSize: 20 }}>{type}</Text>
+      <Text style={{ color: "#9a9ba1", fontSize: 20, fontWeight: "300" }}>
+        {type}
+      </Text>
     </View>
   );
 };
