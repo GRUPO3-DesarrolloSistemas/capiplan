@@ -1,146 +1,65 @@
-import React, { useState, useEffect } from "react";
-import { Text, View, Dimensions, ScrollView } from "react-native";
-import FitImage from "./FitImage";
-import FitHealthStat from "./FitHealthStat";
-import FitExerciseStat from "./FitExersiceStar";
-import FitChart from "./FitChar";
-import AdditionalStats from "./Stats";
+//'../../../assets/utils/dataService';
+//'../../../assets/utils/SensorService'
+import React, { useState, useEffect } from 'react';
+import { Text, View, Dimensions, ScrollView } from 'react-native';
+import { Accelerometer, Pedometer } from 'expo-sensors';
+import FitImage from './FitImage';
+import FitExerciseStar from './FitExersiceStar';
+import FitChar from './FitChar';
+
 const { width } = Dimensions.get("screen");
 
+interface FitDataSets {
+  data: number[];
+  baseline: number;
+}
+
+interface FitChartData {
+  labels: string[];
+  datasets: FitDataSets[];
+}
+
 const GoogleFit = () => {
-  const [stepsData, setStepsData] = useState({
-    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    datasets: [
-      {
-        data: [10000, 9000, 2000, 3000, 8000, 11000, 10500],
-        baseline: 10000,
-      },
-    ],
-  });
+  const [stepsData, setStepsData] = useState<FitChartData | null>(null);
+  const [caloriesData, setCaloriesData] = useState<FitChartData | null>(null);
+  const [kmData, setKmData] = useState<FitChartData | null>(null);
+  const [sleepData, setSleepData] = useState<FitChartData | null>(null);
+  const [accelData, setAccelData] = useState({ x: 0, y: 0, z: 0 });
+  const [stepCount, setStepCount] = useState(0);
 
-  const [caloriesData, setCaloriesData] = useState({
-    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    datasets: [
-      {
-        data: [3000, 2500, 1500, 1800, 2000, 2200, 2100],
-        baseline: 2500,
-      },
-    ],
-  });
-
-  const [kmData, setKmData] = useState({
-    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    datasets: [
-      {
-        data: [8, 7.5, 5, 6, 7, 6.5, 8],
-        baseline: 7.5,
-      },
-    ],
-  });
-
-  const [sleepData, setSleepData] = useState({
-    labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-    datasets: [
-      {
-        data: [7, 8, 6.5, 7.5, 6, 8, 7],
-        baseline: 8,
-      },
-    ],
-  });
-
-  // Simular carga inicial de datos y actualización
   useEffect(() => {
-    const stepsInterval = setInterval(() => {
-      const newStepsData = {
-        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        datasets: [
-          {
-            data: [
-              Math.floor(Math.random() * 10000), // Simulación de datos aleatorios
-              Math.floor(Math.random() * 10000),
-              Math.floor(Math.random() * 10000),
-              Math.floor(Math.random() * 10000),
-              Math.floor(Math.random() * 10000),
-              Math.floor(Math.random() * 10000),
-              Math.floor(Math.random() * 10000),
-            ],
-            baseline: 10000,
-          },
-        ],
-      };
-      setStepsData(newStepsData);
-    }, 5000); // Actualizar cada 5 segundos (simulado)
+    const fetchSensorData = async () => {
+      Accelerometer.setUpdateInterval(1000);
+      const accelerometerSubscription = Accelerometer.addListener((accelerometerData) => {
+        setAccelData(accelerometerData);
+      });
 
-    const caloriesInterval = setInterval(() => {
-      const newCaloriesData = {
-        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        datasets: [
-          {
-            data: [
-              Math.floor(Math.random() * 3000), // Simulación de datos aleatorios
-              Math.floor(Math.random() * 3000),
-              Math.floor(Math.random() * 3000),
-              Math.floor(Math.random() * 3000),
-              Math.floor(Math.random() * 3000),
-              Math.floor(Math.random() * 3000),
-              Math.floor(Math.random() * 3000),
-            ],
-            baseline: 2500,
-          },
-        ],
-      };
-      setCaloriesData(newCaloriesData);
-    }, 7000); // Actualizar cada 7 segundos (simulado)
+      const pedometerSubscription = Pedometer.watchStepCount((result) => {
+        setStepCount(result.steps);
+      });
 
-    const kmInterval = setInterval(() => {
-      const newKmData = {
-        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        datasets: [
-          {
-            data: [
-              5 + Math.random(), // Simulación de datos aleatorios
-              6 + Math.random(),
-              7 + Math.random(),
-              5 + Math.random(),
-              6.5 + Math.random(),
-              7 + Math.random(),
-              8 + Math.random(),
-            ],
-            baseline: 3,
-          },
-        ],
+      return () => {
+        accelerometerSubscription && accelerometerSubscription.remove();
+        pedometerSubscription && pedometerSubscription.remove();
       };
-      setKmData(newKmData);
-    }, 6000); // Actualizar cada 6 segundos (simulado)
+    };
 
-    const sleepInterval = setInterval(() => {
-      const newSleepData = {
-        labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-        datasets: [
-          {
-            data: [
-              7 + Math.random(), // Simulación de datos aleatorios
-              8 + Math.random(),
-              6.5 + Math.random(),
-              7.5 + Math.random(),
-              6 + Math.random(),
-              8 + Math.random(),
-              7 + Math.random(),
-            ],
-            baseline: 8,
-          },
-        ],
-      };
-      setSleepData(newSleepData);
-    }, 8000); // Actualizar cada 8 segundos (simulado)
-
-    return () => {
-      clearInterval(stepsInterval);
-      clearInterval(caloriesInterval);
-      clearInterval(kmInterval);
-      clearInterval(sleepInterval);
-    }; // Limpiar los intervalos al desmontar el componente
+    fetchSensorData();
   }, []);
+
+  useEffect(() => {
+    const labels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dummyData = Array(7).fill(0);
+
+    setStepsData({ labels, datasets: [{ data: dummyData, baseline: 10000 }] });
+    setCaloriesData({ labels, datasets: [{ data: dummyData, baseline: 2500 }] });
+    setKmData({ labels, datasets: [{ data: dummyData, baseline: 3 }] });
+    setSleepData({ labels, datasets: [{ data: dummyData, baseline: 8 }] });
+  }, []);
+
+  // Calcular distancia y calorías en función de los pasos
+  const distance = (stepCount * 0.762) / 1000; // Convertimos a kilómetros
+  const calories = stepCount * 0.04;
 
   return (
     <ScrollView style={{ backgroundColor: "#1f2026" }}>
@@ -156,21 +75,7 @@ const GoogleFit = () => {
           marginBottom: width * 0.05,
         }}
       >
-        {/*<FitHealthStat
-          iconBackgroundColor="#183b57"
-          iconColor="#0e8df2"
-          actual="75"
-          over="/100"
-          type="Move Min"
-        />
-        <FitHealthStat
-          iconBackgroundColor="#124b41"
-          iconColor="#03ddb3"
-          actual="30"
-          over="/20"
-          type="Heart Pts"
-          doubleIcon
-        />*/}
+        {/* Otros componentes */}
       </View>
       <View
         style={{
@@ -183,8 +88,8 @@ const GoogleFit = () => {
         }}
       >
         <View>
-          <FitExerciseStat
-            quantity={stepsData.datasets[0].data[stepsData.datasets[0].data.length - 1].toString()}
+          <FitExerciseStar
+            quantity={stepCount.toString()}
             type="Pasos"
           />
         </View>
@@ -194,9 +99,9 @@ const GoogleFit = () => {
           </Text>
         </View>
         <View>
-          <FitExerciseStat
-            quantity={caloriesData.datasets[0].data[caloriesData.datasets[0].data.length - 1].toString()}
-            type="Calorias"
+          <FitExerciseStar
+            quantity={calories.toFixed(2)}
+            type="Calorías"
           />
         </View>
         <View>
@@ -205,8 +110,8 @@ const GoogleFit = () => {
           </Text>
         </View>
         <View>
-          <FitExerciseStat
-            quantity={kmData.datasets[0].data[kmData.datasets[0].data.length - 1].toFixed(1)}
+          <FitExerciseStar
+            quantity={distance.toFixed(2)}
             type="Km"
           />
         </View>
@@ -217,29 +122,10 @@ const GoogleFit = () => {
         </View>
       </View>
       <View>
-        <FitChart
-          title={"Completar 10,000 pasos diarios"}
-          data={stepsData}
-          baseline={10000}
-        />
-        <FitChart
-          title={"Consumo de Calorías"}
-          description={"Hoy"}
-          data={caloriesData}
-          baseline={2500}
-        />
-        <FitChart
-          title={"Distancia Recorrida"}
-          description={"Hoy"}
-          data={kmData}
-          baseline={3}
-        />
-        <FitChart
-          title={"Horas de Sueño"}
-          description={"Esta semana"}
-          data={sleepData}
-          baseline={8}
-        />
+        {stepsData && <FitChar title={"Completar 10,000 pasos diarios"} data={stepsData} baseline={10000} />}
+        {caloriesData && <FitChar title={"Consumo de Calorías"} description={"Hoy"} data={caloriesData} baseline={2500} />}
+        {kmData && <FitChar title={"Distancia Recorrida"} description={"Hoy"} data={kmData} baseline={3} />}
+        {sleepData && <FitChar title={"Horas de Sueño"} description={"Esta semana"} data={sleepData} baseline={8} />}
       </View>
       <View
         style={{
@@ -250,15 +136,15 @@ const GoogleFit = () => {
           marginBottom: 20,
         }}
       >
-        {/*<AdditionalStats
-          name="Ritmo cardiaco"
-          description="N"
-        />
-        <AdditionalStats name="Peso" description="69 kg • Mar 14" />
-        <AdditionalStats
-          name="Presión sanguínea"
-          description="120/70 mmHg • Apr 27, 2019"
-        />*/}
+        <Text style={{ color: "#fff" }}>
+          Sensor X: {accelData.x.toFixed(2)}
+        </Text>
+        <Text style={{ color: "#fff" }}>
+          Sensor Y: {accelData.y.toFixed(2)}
+        </Text>
+        <Text style={{ color: "#fff" }}>
+          Sensor Z: {accelData.z.toFixed(2)}
+        </Text>
       </View>
     </ScrollView>
   );
