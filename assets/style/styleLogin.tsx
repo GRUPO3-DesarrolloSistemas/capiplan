@@ -1,11 +1,12 @@
-import { StyleSheet, Dimensions } from "react-native";
-const { width, height } = Dimensions.get('screen');
-
+import { StyleSheet } from "react-native";
+import { colors } from "../../src/themes/colors";
+import { width, height } from "../../src/constants/constants";
+import { sizes } from "../../src/themes/sizes";
 
 const styles = StyleSheet.create({
     container: {
         height: height,
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
     },
     loginBanner: {
         height: '40%',
@@ -14,9 +15,7 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
     },
     logoContainer: {
-        flex: 1,
         width: width,
-        height: '40%',
         position: 'absolute',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
         width: 130,
         height: 130,
         position: 'absolute',
-        backgroundColor: '#FFF',
+        backgroundColor: colors.white,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 130 / 2,
@@ -46,60 +45,58 @@ const styles = StyleSheet.create({
     },
     bigFont: {
         fontFamily: 'Comfortaa Bold',
-        fontSize: 50,
+        fontSize: sizes.big,
     },
     smallFont: {
         fontFamily: 'Comfortaa Bold',
-        fontSize: 17,
+        fontSize: sizes.large,
     },
-    smallFontBold: {
-        color: '#868686',
+    smallFontGray: {
+        color: colors.lightGray,
         fontFamily: 'Comfortaa Bold',
-        fontSize: 12,
+        fontSize: sizes.small,
     },
     smallFontRegular: {
-        color: '#868686',
+        color: colors.lightGray,
         fontFamily: 'Comfortaa Regular',
-        fontSize: 12,
+        fontSize: sizes.small,
     },
-    textForm: {
+    textView: {
+        height: 'auto',
         flexDirection: "column",
+        top: -20,
         paddingLeft: 30,
     },
     inputForm: {
         alignItems: "center",
         justifyContent: "flex-start",
         flexDirection: "column",
-        gap: 40,
-        paddingTop: 50,
-        paddingBottom: 50,
+        paddingTop: 30,
     },
     loginInput: {
         width: 300,
         height: 40,
         textAlign: "left",
         fontFamily: 'Comfortaa Regular',
-        fontSize: 15,
-        backgroundColor: '#FFF',
+        fontSize: sizes.medium,
+        backgroundColor: colors.white,
         borderRadius: 7,
-        shadowColor: '#121212',
+        shadowColor: colors.black,
         elevation: 10,
         paddingLeft: 20,
     },
-    button: {
-        width: 150,
-        height: 40,
-        backgroundColor: '#512bcf',
-        alignSelf: 'center',
-        justifyContent: 'center',
-        borderRadius: 7,
+    inputStateText: {
+        fontFamily: 'Comfortaa Regular',
+        fontSize: sizes.extraSmall,
+        color: colors.lightPurple,
+        paddingBottom: 40,
     },
-    fontButton: {
-        textAlign: "center",
-        fontFamily: 'Comfortaa Bold',
-        fontSize: 15,
-        lineHeight: 15,
-        color: '#FFF',
+    loginErrorText: {
+        fontFamily: 'Comfortaa Regular',
+        fontSize: sizes.extraSmall,
+        color: colors.lightPurple,
+        textAlign: 'center',
+        position: "relative"
     },
     loginOptions: {
         flexDirection: "column",
