@@ -1,73 +1,75 @@
-// style/styleCalendar.ts
+// src/components/MyAgenda/styles.ts
+
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  appContainer: {
-    paddingTop: 50, 
+  container: {
+    flex: 1,
   },
-  calendarContainer: {
-    padding: 20,
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 5,
-  },
-  currentDate: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: 15,
-  },
-  daysContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  dayContainer: {
-    width: '14.28%', // Aproximadamente 1/7 del ancho de la pantalla
+  item: {
+    backgroundColor: '#8A67FF',
+    borderRadius: 5,
     padding: 10,
+    marginRight: 10,
+    marginTop: 17,
+  },
+  itemText: {
+    color: '#FFFFFF',
+  },
+  emptyDate: {
+    height: 15,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 5,
+    paddingTop: 30,
   },
-  day: {
+  emptyDateText: {
+    color: '#868686',
+  },
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContainer: {
+    width: 300,
+    padding: 20,
+    backgroundColor: '#151515',
+    borderRadius: 10,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#FA8334',
+    marginBottom: 10,
+  },
+  modalInput: {
+    borderColor: '#868686',
+    borderWidth: 1,
+    padding: 5,
+    marginBottom: 10,
+    color: '#FFFFFF',
+    backgroundColor: '#3D3D3D',
+  },
+  modalButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  addButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#512BCF',
+    padding: 15,
+    borderRadius: 30,
+    elevation: 5,
+  },
+  addButtonText: {
+    color: '#FFFFFF',
     fontSize: 16,
-    color: '#333',
-    textAlign: 'center',
   },
-  eventsContainer: {
-      marginTop: 20,
-    },
-    eventHeader: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: '#333',
-      marginBottom: 10,
-    },
-    input: {
-      height: 40,
-      borderColor: '#ccc',
-      borderWidth: 1,
-      marginBottom: 10,
-      paddingHorizontal: 10,
-      borderRadius: 5,
-    },
-    eventsList: {
-      marginTop: 20,
-    },
-    eventItem: {
-      backgroundColor: '#f9f9f9',
-      padding: 10,
-      borderRadius: 5,
-      marginBottom: 10,
-    },
-    eventText: {
-      fontSize: 16,
-      color: '#333',
-    },
 });
 
 export default styles;
