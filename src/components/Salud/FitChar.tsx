@@ -1,10 +1,12 @@
+// FitChart.tsx
 import React from "react";
 import { View, Dimensions, Text } from "react-native";
 import { BarChart } from "react-native-chart-kit";
+import styles from '../../../assets/style/styleFitChart';
 
 interface FitDataSets {
   data: number[];
-  baseline:number;
+  baseline: number;
 }
 
 interface FitChartData {
@@ -23,30 +25,20 @@ const FitChart = (props: FitChartProps) => {
   const { data, title, description, baseline } = props;
   
   return (
-    <View style={{ flex: 1, marginBottom: 30 }}>
-      <View style={{ paddingLeft: 20 }}>
-        <Text
-          style={{
-            color: "#e6e7ec",
-            fontSize: 20,
-            fontWeight: "500",
-            marginBottom: 5,
-          }}
-        >
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>
           {title}
         </Text>
         {description && (
-          <Text style={{ color: "#9a9ba1", fontSize: 15, marginBottom: 20 }}>
+          <Text style={styles.description}>
             {description}
           </Text>
         )}
       </View>
       <View>
         <BarChart
-          style={{
-            marginVertical: 8,
-            borderRadius: 16,
-          }}
+          style={styles.chart}
           yAxisSuffix=""
           data={data}
           width={Dimensions.get("window").width}

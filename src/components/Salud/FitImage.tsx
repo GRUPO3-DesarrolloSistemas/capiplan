@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Dimensions, Animated } from "react-native";
+// FitImage.tsx
+import React, { useState, useEffect } from "react";
+import { View, Dimensions, Animated } from "react-native";
 import Svg, { Circle, G } from "react-native-svg";
+import styles from '../../../assets/style/styleFitImage';
 
 const { width, height } = Dimensions.get("screen");
 
@@ -22,7 +24,6 @@ const FitImage = () => {
     (outerCirclePerimeter * outerCircleFillPercentage) / 100;
 
   const [springValue] = useState(new Animated.Value(1.3));
-
   const [innerCircleInitialFill] = useState(
     new Animated.Value(innerCirclePerimeter)
   );
@@ -30,7 +31,7 @@ const FitImage = () => {
     new Animated.Value(outerCirclePerimeter)
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     Animated.parallel([
       Animated.timing(innerCircleInitialFill, {
         toValue: innerCircleStrokeDashOffset,
@@ -40,14 +41,14 @@ const FitImage = () => {
       Animated.timing(outerCircleInitialFill, {
         toValue: outerCircleStrokeDashOffset,
         duration: 2000,
-         useNativeDriver: false
+        useNativeDriver: false
       }),
       Animated.spring(springValue, {
         toValue: 1,
         friction: 1,
-         useNativeDriver: false
+        useNativeDriver: false
       })
-    ]).start()
+    ]).start();
   }, []);
 
   return (
@@ -57,9 +58,7 @@ const FitImage = () => {
           viewBox={`0 0 50 50`}
           width={width}
           height={height / 2.5}
-          style={{
-            transform: [{ rotateZ: "-90deg" }],
-          }}
+          style={{ transform: [{ rotateZ: "-90deg" }] }}
         >
           <G>
             <Circle
@@ -103,19 +102,9 @@ const FitImage = () => {
             />
           </G>
         </Svg>
-        <View
-          style={{
-            position: "absolute",
-            justifyContent: "center",
-            alignItems: "center",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-          }}
-        >
-             <Animated.Image
-            source={require("../../../assets/img/correr.gif")}
+        <View style={styles.svgContainer}>
+          <Animated.Image
+            source={require("../../../assets/img/capibara.png")}
             style={[styles.image, { transform: [{ scale: springValue }] }]}
           />
         </View>
@@ -123,18 +112,5 @@ const FitImage = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  image: {
-    width: 120,
-    height: 120,
-    borderRadius: width * 0.5,
-  },
-});
 
 export default FitImage;
