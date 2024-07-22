@@ -12,11 +12,11 @@ export const sendDataToOpenAI = async (steps: number, distance: number, calories
       messages: [
         {
           role: 'user',
-          content: `Analiza los siguientes datos de fitness: Pasos: ${steps}, Distancia: ${distance.toFixed(2)} km, Calorías: ${calories}. Proporciona una sugerencia en español sobre si los pasos son suficientes para mantener una buena salud, si no lo son que actividad fisica sugieres para complementarlo.`
+          content: `Analiza los siguientes datos de actividad física: Pasos: ${steps}, Distancia: ${distance.toFixed(2)} km, Calorías: ${calories}. Proporciona una sugerencia en español sobre si los pasos son suficientes para mantener una buena salud, si no lo son que actividad fisica sugieres para complementarlo. Si es demasiada actividad física, sugiere alguna actividad recreativa de descanso, como visualizar contenido multimedia, pasar tiempo con amigos o familia, entre otros, sé realista con la respuesta.`
         }
       ],
       temperature: 0.3,
-      max_tokens: 150,
+      max_tokens: 200,
     });
     
     const messageContent = completion.choices[0]?.message?.content;
