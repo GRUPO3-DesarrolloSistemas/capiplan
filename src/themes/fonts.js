@@ -37,7 +37,7 @@ export const fonts = {
         fontSize: sizes.medium,
     },
     mediumFontLightGray: {
-        color: colors.lighGray,
+        color: colors.lightGray,
         fontFamily: 'Comfortaa Bold',
         fontSize: sizes.medium,
     },

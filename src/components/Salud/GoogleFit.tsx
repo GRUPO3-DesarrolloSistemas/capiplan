@@ -5,14 +5,15 @@ import React, { useState, useEffect } from "react";
 import { Text, View, Dimensions, ScrollView, TouchableOpacity } from "react-native";
 import { Pedometer } from 'expo-sensors';
 import { Audio } from 'expo-av';
+import Collapsible from 'react-native-collapsible';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import FitImage from "./FitImage";
 import FitExersiceStar from "./FitExersiceStar";
 import FitChar from "./FitChar";
 import { sendDataToOpenAI } from '../../../assets/utils/openAIService'; 
-import Collapsible from 'react-native-collapsible';
 import styles from '../../../assets/style/styleGoogleFit';
-
-const { width } = Dimensions.get("screen");
+import { width } from '../../constants/constants';
+import { fonts } from "../../themes/fonts";
 
 interface FitDataSets {
   data: number[];
@@ -149,9 +150,6 @@ const GoogleFit = () => {
       <View>
         <FitImage />
       </View>
-      <View style={styles.fitImageContainer}>
-        {/* Otros componentes */}
-      </View>
       <View style={styles.fitExerciseStatsContainer}>
         <View>
           <FitExersiceStar
@@ -183,21 +181,19 @@ const GoogleFit = () => {
         </View>
       </View>
       <View>
-        {stepsData && <FitChar title={"Completar 10,000 pasos diarios"} data={stepsData} baseline={10000} />}
-        {distanceData && <FitChar title={"Distancia Recorrida"} description={"Hoy"} data={distanceData} baseline={8} />}
-        {caloriesData && <FitChar title={"Consumo de Calorías"} description={"Hoy"} data={caloriesData} baseline={2500} />}
+        {stepsData && <FitChar title={"Pasos"} description={" "} data={stepsData} baseline={10000} />}
+        {distanceData && <FitChar title={"Distancia Recorrida"} description={"km"} data={distanceData} baseline={8} />}
+        {caloriesData && <FitChar title={"Consumo de Calorías"} description={"cal"} data={caloriesData} baseline={2500} />}
       </View>
       <TouchableOpacity onPress={toggleExpanded} style={styles.accordionHeader}>
-        <Text style={styles.accordionHeaderText}>Sugerencia</Text>
+        <Icon name="flash" size={25} style={styles.accordionHeaderIcon}></Icon>
+        <Text style={styles.accordionHeaderText}>Generar Sugerencia</Text>
       </TouchableOpacity>
       <Collapsible collapsed={collapsed}>
         <View style={styles.accordionContent}>
-          <Text style={styles.accordionText}>{suggestion}</Text>
+          <Text style={fonts.mediumFontGray}>{suggestion}</Text>
         </View>
       </Collapsible>
-      <View style={styles.centerAlignContainer}>
-        {/* Otros componentes */}
-      </View>
     </ScrollView>
   );
 };

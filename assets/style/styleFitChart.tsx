@@ -1,28 +1,38 @@
 // FitChartStyles.tsx
 import { StyleSheet } from 'react-native';
+import { colors } from '../../src/themes/colors';
+import { sizes } from '../../src/themes/sizes';
+import { width } from '../../src/constants/constants';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 30,
   },
   titleContainer: {
     paddingLeft: 20,
+    marginTop: 20,
   },
   title: {
-    color: "#e6e7ec",
-    fontSize: 20,
-    fontWeight: "500",
+    color: colors.gray,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.large,
     marginBottom: 5,
   },
   description: {
-    color: "#9a9ba1",
-    fontSize: 15,
+    color: colors.lightGray,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.medium,
     marginBottom: 20,
   },
   chart: {
-    marginVertical: 8,
-    borderRadius: 16,
+    alignSelf: 'center',
+  },
+  horizontalSeparator: {
+    top: 2,
+    borderWidth: 1,
+    borderColor: colors.lightOrange,
+    width: width - 50,
+    alignSelf: 'center',
   },
 });
 

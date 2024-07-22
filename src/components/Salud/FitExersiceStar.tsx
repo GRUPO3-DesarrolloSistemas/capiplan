@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { colors } from "../../themes/colors";
+import { fonts } from "../../themes/fonts";
 
 interface FitExerciseStatProps {
   quantity: string;
@@ -8,11 +10,11 @@ interface FitExerciseStatProps {
 
 const FitExerciseStat: React.FC<FitExerciseStatProps> = ({ quantity, type }) => {
   return (
-    <View style={{ alignItems: "center" }}>
-      <Text style={{ color: "#e6e7ec", fontSize: 30, fontWeight: "700" }}>
+    <View style={{ alignItems: "center"}}>
+      <Text style={fonts.extraLargeFontGray}>
         {quantity}
       </Text>
-      <Text style={{ color: "#9a9ba1", fontSize: 20, fontWeight: "300" }}>
+      <Text style={fonts.largeFontLightGray}>
         {type}
       </Text>
     </View>

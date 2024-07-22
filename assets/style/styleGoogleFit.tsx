@@ -1,30 +1,35 @@
 // GoogleFitStyles.tsx
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../src/themes/colors';
+import { sizes } from '../../src/themes/sizes';
 
 const { width } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   accordionHeader: {
-    backgroundColor: "#444",
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
+    height: 50,
+    backgroundColor: colors.lightOrange,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  accordionHeaderIcon: {
+    position: 'absolute',
+    left: 20,
+    color: colors.white,
   },
   accordionHeaderText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
+    position: 'absolute',
+    left: 50,
+    color: colors.white,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.large,
   },
   accordionContent: {
     padding: 15,
-    backgroundColor: "#333",
-  },
-  accordionText: {
-    color: "#fff",
-    fontSize: 16,
+    backgroundColor: colors.extraLighGray,
   },
   mainContainer: {
-    backgroundColor: "#1f2026"
+    backgroundColor: colors.white,
   },
   fitImageContainer: {
     flex: 1,

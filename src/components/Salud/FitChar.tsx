@@ -3,6 +3,8 @@ import React from "react";
 import { View, Dimensions, Text } from "react-native";
 import { BarChart } from "react-native-chart-kit";
 import styles from '../../../assets/style/styleFitChart';
+import { width } from "../../constants/constants";
+import { colors } from "../../themes/colors";
 
 interface FitDataSets {
   data: number[];
@@ -23,7 +25,7 @@ interface FitChartProps {
 
 const FitChart = (props: FitChartProps) => {
   const { data, title, description, baseline } = props;
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -41,22 +43,19 @@ const FitChart = (props: FitChartProps) => {
           style={styles.chart}
           yAxisSuffix=""
           data={data}
-          width={Dimensions.get("window").width}
+          width={width - 50}
           height={220}
           yAxisLabel=""
           chartConfig={{
             backgroundColor: "#1f2026",
-            backgroundGradientFrom: "#1f2026",
-            backgroundGradientTo: "#1f2026",
-            fillShadowGradient: "#7262f8",
+            backgroundGradientFrom: colors.white,
+            backgroundGradientTo: colors.white,
+            fillShadowGradient: colors.lightPurple,
             fillShadowGradientOpacity: 1,
-            color: (opacity = 1) => `rgba(${154}, ${155}, ${161}, ${opacity})`,
-            labelColor: (opacity = 1) =>
-              `rgba(${154}, ${155}, ${161}, ${opacity})`,
+            color: (opacity) => `rgba(0,0,0, 0.1)`,
+            labelColor: (opacity) =>
+              `rgba(0,0,0, 0.7)`,
             style: {
-              borderRadius: 16,
-              right: 0,
-              paddingRight: 64,
             },
             barPercentage: 0.5,
             decimalPlaces: 0,
@@ -64,6 +63,7 @@ const FitChart = (props: FitChartProps) => {
           showBarTops={false}
           fromZero
         />
+        <View style={styles.horizontalSeparator}></View>
       </View>
     </View>
   );

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { View, Dimensions, Animated } from "react-native";
 import Svg, { Circle, G } from "react-native-svg";
 import styles from '../../../assets/style/styleFitImage';
+import { colors } from "../../themes/colors";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -66,7 +67,7 @@ const FitImage = () => {
               cy="25"
               r={outerCircleRadius}
               fill="transparent"
-              stroke="#1f4a42"
+              stroke= {colors.extraLighGray}
               strokeDasharray="10, 1"
               strokeDashoffset="30"
               strokeWidth={0.5}
@@ -76,7 +77,7 @@ const FitImage = () => {
               cy="25"
               r={outerCircleRadius}
               fill="transparent"
-              stroke="#02ac8a"
+              stroke={colors.lightPurple}
               strokeDasharray={outerCirclePerimeter}
               strokeDashoffset={outerCircleInitialFill}
               strokeLinecap={"round"}
@@ -86,7 +87,7 @@ const FitImage = () => {
               cy="25"
               r={innerCircleRadius}
               fill="transparent"
-              stroke="#143c5b"
+              stroke={colors.extraLighGray}
               strokeDasharray="1"
               strokeWidth={0.5}
             />
@@ -95,7 +96,7 @@ const FitImage = () => {
               cy="25"
               r={innerCircleRadius}
               fill="transparent"
-              stroke="#028cfe"
+              stroke={colors.lightOrange}
               strokeDasharray={innerCirclePerimeter}
               strokeDashoffset={innerCircleInitialFill}
               strokeLinecap={"round"}
