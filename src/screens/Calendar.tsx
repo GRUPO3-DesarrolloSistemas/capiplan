@@ -1,9 +1,12 @@
 // src/components/MyAgenda/index.tsx
 
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, Modal, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { View, Text, TextInput, Modal, TouchableOpacity} from 'react-native';
 import { Agenda } from 'react-native-calendars';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import styles from '../../assets/style/styleCalendar';
+import { fonts } from '../themes/fonts';
 
 interface EventItem {
   name: string;
@@ -136,13 +139,13 @@ const MyAgenda = () => {
           agendaKnobColor: '#512BCF'
         }}
       />
-      <TouchableHighlight style={styles.addButton} onPress={() => {
+      <TouchableOpacity style={styles.addButton} onPress={() => {
         setSelectedEvent(null);
         setNewEvent('');
         setModalVisible(true);
       }}>
-        <Text style={styles.addButtonText}>Add Event</Text>
-      </TouchableHighlight>
+        <Text style={styles.addButtonText}>Agregar Evento</Text>
+      </TouchableOpacity>
       <Modal
         visible={modalVisible}
         animationType="slide"
@@ -151,7 +154,7 @@ const MyAgenda = () => {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
-            <Text style={styles.modalTitle}>{selectedEvent ? 'Edit Event' : 'Add Event'}</Text>
+            <Text style={styles.modalTitle}>{selectedEvent ? 'Editar Evento' : 'Agregar Evento'}</Text>
             <TextInput
               style={styles.modalInput}
               placeholder="Event Name"
@@ -161,13 +164,25 @@ const MyAgenda = () => {
             <View style={styles.modalButtonContainer}>
               {selectedEvent ? (
                 <>
-                  <Button title="Update" onPress={updateEvent} color="#FA8334" />
-                  <Button title="Delete" onPress={deleteEvent} color="#FF6F61" />
+                  <TouchableOpacity style={styles.modalButton} onPress={updateEvent}>
+                    <Icon name='checkmark-circle-outline' style={styles.modalButtonIcon} size={20}></Icon>
+                    <Text style={styles.modalButtonText}>Actualizar</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.modalButton} onPress={deleteEvent} >
+                    <Icon name='close-circle-outline' style={styles.modalButtonIcon} size={20}></Icon>
+                    <Text style={styles.modalButtonText}>Eliminar</Text>
+                  </TouchableOpacity>
                 </>
               ) : (
-                <Button title="Add" onPress={addEvent} color="#512BCF" />
+                <TouchableOpacity style={styles.modalButton} onPress={addEvent}>
+                    <Icon name='add-circle-outline' style={styles.modalButtonIcon} size={20}></Icon>
+                    <Text style={styles.modalButtonText}>Agregar</Text>
+                  </TouchableOpacity>
               )}
-              <Button title="Cancel" onPress={() => setModalVisible(false)} color="#868686" />
+              <TouchableOpacity style={styles.modalButtonCancel} onPress={() => setModalVisible(false)}>
+                    <Icon name='arrow-back-circle-outline' style={styles.modalButtonIcon} size={20}></Icon>
+                    <Text style={styles.modalButtonText}>Cancelar</Text>
+                  </TouchableOpacity>
             </View>
           </View>
         </View>

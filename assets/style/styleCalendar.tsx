@@ -1,6 +1,8 @@
 // src/components/MyAgenda/styles.ts
 
 import { StyleSheet } from 'react-native';
+import { colors } from '../../src/themes/colors';
+import { sizes } from '../../src/themes/sizes';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,32 +32,71 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
   },
   modalContainer: {
     width: 300,
     padding: 20,
-    backgroundColor: '#151515',
+    backgroundColor: colors.white,
     borderRadius: 10,
     elevation: 5,
   },
   modalTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#FA8334',
-    marginBottom: 10,
+    color: colors.gray,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.extraLarge,
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   modalInput: {
-    borderColor: '#868686',
+    borderColor: colors.gray,
     borderWidth: 1,
+    borderRadius: 7,
     padding: 5,
+    paddingLeft: 15,
     marginBottom: 10,
-    color: '#FFFFFF',
-    backgroundColor: '#3D3D3D',
+    color: colors.gray,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.medium,
+    backgroundColor: colors.white,
   },
   modalButtonContainer: {
+    flexDirection: 'column',
+    gap: 20,
+    marginTop: 20,
+  },
+  modalButton: {
+    width: 150,
+    backgroundColor: colors.purple,
+    borderRadius: 20,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    gap: 15,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingLeft: 20,
+    paddingTop: 5,
+    paddingBottom: 5,
+  },
+  modalButtonCancel: {
+    width: 150,
+    backgroundColor: colors.lightOrange,
+    borderRadius: 20,
+    flexDirection: 'row',
+    gap: 15,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    paddingLeft: 20,
+    paddingTop: 5,
+    paddingBottom: 5,
+  },
+  modalButtonText: {
+    color: colors.white,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.large,
+    lineHeight: sizes.large + 2,
+  },
+  modalButtonIcon: {
+    color: colors.white,
   },
   addButton: {
     position: 'absolute',
@@ -67,8 +108,11 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   addButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
+    color: colors.white,
+    paddingLeft: 20,
+    paddingRight: 20,
+    fontFamily: 'Comfortaa Bold',
+    fontSize: sizes.large,
   },
 });
 
