@@ -15,6 +15,7 @@ export const sendDataToOpenAI = async (steps: number, distance: number, calories
           content: `Analiza los siguientes datos de fitness: Pasos: ${steps}, Distancia: ${distance.toFixed(2)} km, Calorías: ${calories}. Proporciona una sugerencia en español sobre si los pasos son suficientes para mantener una buena salud, si no lo son que actividad fisica sugieres para complementarlo.`
         }
       ],
+      temperature: 0.3,
       max_tokens: 150,
     });
     
