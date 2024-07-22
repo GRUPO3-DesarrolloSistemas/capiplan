@@ -1,19 +1,15 @@
-//'../../../assets/utils/dataService';
-//'../../../assets/utils/SensorService'
-// GoogleFit.tsx
 import React, { useState, useEffect } from "react";
-import { Text, View, Dimensions, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { Pedometer } from 'expo-sensors';
 import { Audio } from 'expo-av';
 import Collapsible from 'react-native-collapsible';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import FitImage from "./FitImage";
-import FitExersiceStar from "./FitExersiceStar";
-import FitChar from "./FitChar";
-import { sendDataToOpenAI } from '../../../assets/utils/openAIService'; 
-import styles from '../../../assets/style/styleGoogleFit';
-import { width } from '../../constants/constants';
-import { fonts } from "../../themes/fonts";
+import FitImage from "../components/Salud/FitImage";
+import FitExersiceStar from "../components/Salud/FitExersiceStar";
+import FitChar from "../components/Salud/FitChar";
+import { sendDataToOpenAI } from '../utils/functions/openAIService';
+import styles from '../../assets/style/styleGoogleFit';
+import { fonts } from "../themes/fonts";
 
 interface FitDataSets {
   data: number[];
@@ -41,7 +37,7 @@ const GoogleFit = () => {
   };
 
   const playSound = async () => {
-    const { sound } = await Audio.Sound.createAsync(require('../../../assets/sounds/notificacion.mp3'));
+    const { sound } = await Audio.Sound.createAsync(require('../../assets/sounds/notificacion.mp3'));
     setSound(sound);
     await sound.playAsync();
   };
@@ -49,8 +45,8 @@ const GoogleFit = () => {
   useEffect(() => {
     return sound
       ? () => {
-          sound.unloadAsync(); // Unload the sound when the component unmounts
-        }
+        sound.unloadAsync(); // Unload the sound when the component unmounts
+      }
       : undefined;
   }, [sound]);
 

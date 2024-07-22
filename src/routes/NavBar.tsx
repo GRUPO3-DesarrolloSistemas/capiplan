@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { UserContext } from "../context/AppContext";
 import Home from '../screens/Home'
 import Calendar from '../screens/Calendar';
-import GoogleFit from '../components/Salud/GoogleFit';
+import GoogleFit from '../screens/GoogleFit';
 import UserPanel from '../screens/userPanel';
 import Start from './start';
 
