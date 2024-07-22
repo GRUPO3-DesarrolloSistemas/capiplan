@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 
 // Inicializa el cliente de OpenAI con la clave API
 const openai = new OpenAI({
-  
+  apiKey: process.env.EXPO_PUBLIC_API_KEY
 });
 
 export const sendDataToOpenAI = async (steps: number, distance: number, calories: number): Promise<string> => {
