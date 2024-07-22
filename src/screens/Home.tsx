@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/style/styleHome';
 import { UserContext } from "../context/AppContext";
 import { fonts } from "../themes/fonts";
+import { colors } from "../themes/colors";
 
 const Home = () => {
     const today = new Date();
@@ -29,16 +30,16 @@ const Home = () => {
         <View style={styles.summary}>
           <Text style={fonts.largeFontBlack}>Resumen</Text>
           <View style={styles.meetingCard}>
-            <Text style={styles.meetingTime}>Hoy</Text>
-            <Text style={styles.meetingTitle}>Presentación proyecto final</Text>
-            <Text style={styles.meetingSubtitle}>Desarrollo de Sistemas</Text>
+            <Text style={fonts.mediumFontGray}>Hoy</Text>
+            <Text style={fonts.mediumFontLightGray}>Presentación proyecto final</Text>
+            <Text style={fonts.mediumFontLightGray}>Desarrollo de Sistemas</Text>
             <View style={styles.meetingDetails}>
-              <Icon name="location-outline" size={16} color="#000" />
-              <Text style={styles.meetingDetailsText}>Zoom</Text>
+              <Icon name="location-outline" size={15} color={colors.lightPurple} />
+              <Text style={fonts.mediumFontLightGray}>Zoom</Text>
             </View>
             <View style={styles.meetingDetails}>
-              <Icon name="people-outline" size={16} color="#000" />
-              <Text style={styles.meetingDetailsText}>Grupo 3</Text>
+              <Icon name="people-outline" size={15} color={colors.lightPurple} />
+              <Text style={fonts.mediumFontLightGray}>Grupo 3</Text>
             </View>
           </View>
         </View>

@@ -42,27 +42,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
-  meetingTime: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  meetingTitle: {
-    fontSize: 16,
-    marginVertical: 5,
-  },
-  meetingSubtitle: {
-    fontSize: 14,
-    color: '#777',
-  },
   meetingDetails: {
     flexDirection: 'row',
+    gap: 20,
     alignItems: 'center',
-    marginTop: 5,
-  },
-  meetingDetailsText: {
-    marginLeft: 5,
-    fontSize: 14,
-    color: '#777',
+    marginTop: 10,
   },
   activitiesGrid: {
     flexDirection: 'row',
