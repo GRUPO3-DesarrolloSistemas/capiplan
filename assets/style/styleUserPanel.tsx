@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     userPanelBanner: {
         height: '25%',
-        backgroundColor: colors.lightOrange,
+        backgroundColor: colors.lightPurple,
         marginTop: 32,
         alignItems: 'center'
     },

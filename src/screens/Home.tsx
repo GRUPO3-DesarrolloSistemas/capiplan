@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../../assets/style/styleHome';
 import { UserContext } from "../context/AppContext";
+import { fonts } from "../themes/fonts";
 
 const Home = () => {
     const today = new Date();
@@ -15,53 +16,53 @@ const Home = () => {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.date}>{day}</Text>
+          <Text style={fonts.bigFont}>{day}</Text>
           <View style={styles.dateDetails}>
-            <Text style={styles.monthYear}>{weekday}</Text>
-            <Text style={styles.monthYear}>{month} {year}</Text>
+            <Text style={fonts.largeFontLightGray}>{weekday}</Text>
+            <Text style={fonts.largeFontLightGray}>{month} {year}</Text>
           </View>
           <View style={styles.greeting}>
-            <Text style={styles.greetingText}>Bienvenido</Text>
-            <Text style={styles.userName}>{userData.username}</Text>
+            <Text style={fonts.mediumFontLightGray}>Bienvenido</Text>
+            <Text style={fonts.extraLargeFontBlack}>{userData.username}</Text>
           </View>
         </View>
         <View style={styles.summary}>
-          <Text style={styles.sectionTitle}>Resumen</Text>
+          <Text style={fonts.largeFontBlack}>Resumen</Text>
           <View style={styles.meetingCard}>
-            <Text style={styles.meetingTime}>11:00 - 11:30</Text>
-            <Text style={styles.meetingTitle}>Reunión Proyecto ABC</Text>
-            <Text style={styles.meetingSubtitle}>Proyecto de la empresa X</Text>
+            <Text style={styles.meetingTime}>Hoy</Text>
+            <Text style={styles.meetingTitle}>Presentación proyecto final</Text>
+            <Text style={styles.meetingSubtitle}>Desarrollo de Sistemas</Text>
             <View style={styles.meetingDetails}>
               <Icon name="location-outline" size={16} color="#000" />
-              <Text style={styles.meetingDetailsText}>Lugar</Text>
+              <Text style={styles.meetingDetailsText}>Zoom</Text>
             </View>
             <View style={styles.meetingDetails}>
               <Icon name="people-outline" size={16} color="#000" />
-              <Text style={styles.meetingDetailsText}>Grupo Trabajo 3</Text>
+              <Text style={styles.meetingDetailsText}>Grupo 3</Text>
             </View>
           </View>
         </View>
         <View>
-          <Text style={styles.sectionTitle}>Actividades</Text>
+          <Text style={fonts.largeFontBlack}>Actividades</Text>
           <View style={styles.activitiesGrid}>
             <View style={[styles.activityCard, styles.purple]}>
-              <Text style={styles.activityNumber}>6</Text>
-              <Icon name="calendar-outline" size={24} color="#fff" />
+              <Text style={fonts.extraLargeFontWhite}>6</Text>
+              <Icon name="calendar-outline" size={50} color="#fff" />
               <Text style={styles.activityText}>Actividades pendientes</Text>
             </View>
-            <View style={[styles.activityCard, styles.purple]}>
-              <Text style={styles.activityNumber}>3</Text>
-              <Icon name="time-outline" size={24} color="#fff" />
+            <View style={[styles.activityCard, styles.lightPurple]}>
+              <Text style={fonts.extraLargeFontWhite}>3</Text>
+              <Icon name="time-outline" size={50} color="#fff" />
               <Text style={styles.activityText}>Horas libres</Text>
             </View>
-            <View style={[styles.activityCard, styles.orange]}>
-              <Text style={styles.activityNumber}>4</Text>
-              <Icon name="checkmark-done-outline" size={24} color="#fff" />
+            <View style={[styles.activityCard, styles.lightOrange]}>
+              <Text style={fonts.extraLargeFontWhite}>4</Text>
+              <Icon name="checkmark-done-outline" size={50} color="#fff" />
               <Text style={styles.activityText}>Tareas Realizadas</Text>
             </View>
             <View style={[styles.activityCard, styles.orange]}>
-              <Text style={styles.activityNumber}>8</Text>
-              <Icon name="bed-outline" size={24} color="#fff" />
+              <Text style={fonts.extraLargeFontWhite}>8</Text>
+              <Icon name="bed-outline" size={50} color="#fff" />
               <Text style={styles.activityText}>Horas de sueño</Text>
             </View>
           </View>

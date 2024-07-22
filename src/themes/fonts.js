@@ -3,8 +3,14 @@ import { sizes } from "./sizes";
 
 export const fonts = {
     bigFont: {
+        color: colors.black,
         fontFamily: 'Comfortaa Bold',
         fontSize: sizes.big,
+    },
+    extraLargeFontBlack: {
+        color: colors.black,
+        fontFamily: 'Comfortaa Bold',
+        fontSize: sizes.extraLarge,
     },
     extraLargeFontGray: {
         color: colors.gray,
@@ -15,6 +21,16 @@ export const fonts = {
         color: colors.lightGray,
         fontFamily: 'Comfortaa Bold',
         fontSize: sizes.extraLarge,
+    },
+    extraLargeFontWhite: {
+        color: colors.white,
+        fontFamily: 'Comfortaa Bold',
+        fontSize: sizes.extraLarge,
+    },
+    largeFontBlack: {
+        color: colors.black,
+        fontFamily: 'Comfortaa Bold',
+        fontSize: sizes.large,
     },
     largeFontGray: {
         color: colors.gray,
